@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-front-fresh",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "the eslint plugin to check for paths in fsd architecture",
   "keywords": [
     "eslint",
