@@ -30,6 +30,24 @@ ruleTester.run("public-api-imports", rule, {
       code: "import { useSelector } from 'react-redux'",
       errors: [],
     },
+    {
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\file.test.ts',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
+      errors: [],
+      options: [{
+        alias: '@',
+        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
+      }],
+    },
+    {
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\StoreDecorator.tsx',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
+      errors: [],
+      options: [{
+        alias: '@',
+        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
+      }],
+    }
   ],
 
   invalid: [
@@ -40,5 +58,24 @@ ruleTester.run("public-api-imports", rule, {
       errors: [{ messageId: 'publicApi' }],
       options: [{ alias: '@' }],
     },
+    {
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\StoreDecorator.tsx',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing/file.tsx'",
+      errors: [{messageId: 'publicApi'}],
+      options: [{
+        alias: '@',
+        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
+      }],
+    },
+    {
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\forbidden.ts',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
+      errors: [{messageId: 'testingApi'}],
+      options: [{
+        alias: '@',
+        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
+      }],
+    }
   ],
 });
+
