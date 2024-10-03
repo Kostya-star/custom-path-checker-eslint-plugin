@@ -19,13 +19,35 @@ const rule = require("../../../lib/rules/path-checker"),
 const ruleTester = new RuleTester();
 ruleTester.run("path-checker", rule, {
   valid: [
-    // give me some code that won't trigger a warning
+    {
+      name: 'VALID: with RELATIVE path within the module',
+      // the file name the import happens from
+      filename: 'C:\\Users\\User\\Desktop\\project_name\\src\\entities\\Article',
+      // the file name the import happens to
+      code: "import { something } from '../../something/andSomethingElse'",
+      errors: [],
+    },
   ],
 
   invalid: [
     {
-      code: "code fail",
-      errors: [{ messageId: "Fill me in.", type: "Me too" }],
+      name: 'INVALID: with ABSOLUTE path within the module. withOUT alias',
+      // the file name the import happens from
+      filename: 'C:\\Users\\User\\Desktop\\project_name\\src\\entities\\Article',
+      // the file name the import happens to
+      code: "import { something } from 'entities/Article/something/andSomethingElse'",
+      errors: [{ message: "Paths should be relative within the same layer." }],
     },
+    {
+      name: 'INVALID: with ABSOLUTE path within the module. with alias',
+      filename: 'C:\\Users\\User\\Desktop\\project_name\\src\\entities\\Article',
+      code: "import { something } from '@/entities/Article/something/andSomethingElse'",
+      errors: [{ message: "Paths should be relative within the same layer." }],
+      options: [
+        {
+          alias: '@'
+        }
+      ],
+    }
   ],
 });
