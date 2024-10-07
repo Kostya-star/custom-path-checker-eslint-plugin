@@ -53,7 +53,7 @@ ruleTester.run("layers-imports", rule, {
       options: [
         {
           alias: '@',
-          testFilesPatterns: ['**/StoreProvider']
+          ignoreImportPatterns: ['**/StoreProvider']
         }
       ],
     },
