@@ -57,6 +57,7 @@ ruleTester.run("public-api-imports", rule, {
       code: "import { something } from '@/entities/Article/something/andSomethingElse'",
       errors: [{ messageId: 'publicApi' }],
       options: [{ alias: '@' }],
+      output: "import { something } from '@/entities/Article'"
     },
     {
       filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\StoreDecorator.tsx',
@@ -66,6 +67,7 @@ ruleTester.run("public-api-imports", rule, {
         alias: '@',
         testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
       }],
+      output: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article'"
     },
     {
       filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\forbidden.ts',
@@ -75,6 +77,7 @@ ruleTester.run("public-api-imports", rule, {
         alias: '@',
         testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
       }],
+      // output: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article'"
     }
   ],
 });
