@@ -36,13 +36,13 @@ ruleTester.run("path-checker", rule, {
       filename: 'C:\\Users\\User\\Desktop\\project_name\\src\\entities\\Article',
       // the file name the import happens to
       code: "import { something } from 'entities/Article/something/andSomethingElse'",
-      errors: [{ message: "Paths should be relative within the same layer." }],
+      errors: [{ messageId: 'relativePath' }],
     },
     {
       name: 'INVALID: with ABSOLUTE path within the module. with alias',
       filename: 'C:\\Users\\User\\Desktop\\project_name\\src\\entities\\Article',
       code: "import { something } from '@/entities/Article/something/andSomethingElse'",
-      errors: [{ message: "Paths should be relative within the same layer." }],
+      errors: [{ messageId: 'relativePath' }],
       options: [
         {
           alias: '@'
